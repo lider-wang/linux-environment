@@ -1,0 +1,5 @@
+- Linux account Setup
+  * passwd : Linux Set User Password
+  * passwd (User) : Linux Change password for other user.
+
+
