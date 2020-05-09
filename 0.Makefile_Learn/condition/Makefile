@@ -7,4 +7,4 @@ else ifeq ($(strip $(myname)),CYH)
 	@echo myname is CYH
 else
 	@echo myname is ==$(myname)==
-endif
+end
