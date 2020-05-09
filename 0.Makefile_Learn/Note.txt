@@ -1,0 +1,129 @@
+### Makefile
+
+ - gcc compiler option 
+   -c : 只編譯
+   -S : 編譯成assambly
+   -E : 預處理結果顯示
+   -o : 指定輸出檔名
+   -D : pre-define
+   -I : 新增include搜尋的路徑
+   -L : 追加library搜尋路徑
+   -l : 指定連結函式庫
+   -Wall : 顯示所有警告訊息
+   -g : 編入debug資訊
+   -O2 : 最佳化
+
+# An Introduction to Makefiles
+
+# How to Write Makefiles Rules and Writing the commands in rules
+
+# How to use variable
+
+# Conditionnal Parts
+
+# How to Run Makefile
+
+# Using Implicit Rules
+
+# Variable Assignment
+  - https://wiki.ubuntu.org.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile:%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F
+  1. Recursively Expanded Variable (=)
+  2. Simply Expanded Variables (:=,?=)
+  * note: Don't add space with comment after each command
+  
+  3. $(var: a=b), Advanced Variable assignment method
+    - 替換變量引用, $(var: a=b)  or bar := $(foo:%.o=%.c)
+
+  4. wildcard, 擴展萬用字元
+    - $(wildcard *.c) => 取得當前目錄下所有.c檔    
+	- objects := $(patsubst %.c,%.o,$(wildcard *.c)) => 取得當前目錄下所有.c檔並置換成.o	
+  5. notdir , 去除路徑
+  6. patsubst, 替換萬用字元
+ 
+$@ Target的檔名
+
+$% 程式庫成員中的檔名元素
+
+$< 第一個prequeite的檔名
+
+$? Timestamp 在Target之後的Prequeite
+
+$^ 所有的Prequeite的檔名 但不包含重複部分
+
+$+ 所有的Prequeite的檔名
+
+$* Target的主檔名
+
+$(@D) $(<D) 指的是Target的檔案路徑
+
+$(@F) $(<F) 指的是Target的檔案名稱
+
+
+# Communicating Variables to sub-make
+  - export/ unexport
+  
+
+http://deanjai.blogspot.com/2008/02/subst-subst-subst-eeeefeet-on-street.html
+# String handling function
+  - subst => string replace
+    - define : $(subst <from>,<to>,<text>)
+  
+  - patsubst => pattern string replace (可以包含wildcard)
+    - define : $(patsubst <pattern>,<replacement>,<text>)
+	
+  - strip => remove space
+    - define : $(strip <string>)
+  
+  - findstring => find string
+    - define : $(findstring <find>,<in>)
+	- return <find> or <NULL>
+	
+  - filter => filter pattern
+    - define $(filter <pattern...>,<text>)
+
+  - filter-out => reverse filter pattern
+    - define $(filter-out <pattern...>,<text>)
+
+  - sort  => sort word in string <list>
+    - define : $(sort <list>)
+  
+  - word  => get n words in <text>
+    - define : $(word <n>,<text>)
+	
+  - wordlist => get s to e words in string <text>
+    - define : $(wordlist <s>,<e>,<text>)
+
+  - words => get word number in string <text>
+    - define : $(words <text>)
+	- return : number
+	
+  - firstword => get 1st word in string <text>
+    - $(firstword <text>)
+
+# document handling function
+  - dir    => get directary part of string <names...>
+    - define : $(dir <names...>)
+	
+  - notdir => get non-directary part of string <name...>
+    - define : $(notdir <names...>)
+	- return : non document directory
+	
+  - suffix => get suffix of all document name
+    - define : $(suffix <names...>)
+	- return : document suffix or  NULL
+	
+  - basename => get prefix of all document name
+    - define : $(basename <names...>)
+	
+  - addsuffix => add <suffix> to all words of <names...>
+    - define : $(addsuffix <suffix>,<names...>)
+	
+  - addprefix => add <prefix> to all words of <names...>
+    - define  : $(addprefix <prefix>,<names...>)
+	- example : $(addprefix src/,foo bar) => src/foo src/bar 
+	
+  - join   => append word in <list2> into <list1>
+    - define  : $(join <list1>,<list2>)
+	- example : $(join aaa bbb , 111 222 333) =>aaa111 bbb222 333 
+	
+ 
