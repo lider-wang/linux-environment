@@ -1,5 +1,26 @@
+https://www.eebreakdown.com/2016/08/linux.html
+
 - Linux account Setup
   * passwd : Linux Set User Password
   * passwd (User) : Linux Change password for other user.
 
+- tee, Copy stdin to each FILE, and also to stdout.
+  * tee [OPTION]... [FILE]...
+  * EX1
+    - ping google.com | tee output.txt     (write to output.txt)
+    - ping google.com | tee -a output.txt  (append mode)
+    - ls file* | tee output.txt | wc -l    (redirect)
 
+- awk, Scan/Split to field/Compare Pattern/ Perform action
+  * awk options 'selection _criterial {action }' input-file > output-file
+  * pattern scanning/processing
+  * $0 : Represents the entire line of text.
+  * $1 : Represents the first field.
+  * $NF: Stands for “number of fields,” and represents the last field.
+  * EX1 : awk '{print}' employee.txt
+  * EX2 : aws '/manager/ {print}' employee.txt
+  * EX3 : aws '{print $1,$4}' employee.txt
+  https://www.howtogeek.com/562941/how-to-use-the-awk-command-on-linux/
+  https://likegeeks.com/awk-command/
+
+- sed, manipulate text using search-and-replace expressions

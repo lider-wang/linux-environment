@@ -35,8 +35,8 @@
     - 替換變量引用, $(var: a=b)  or bar := $(foo:%.o=%.c)
 
   4. wildcard, 擴展萬用字元
-    - $(wildcard *.c) => 取得當前目錄下所有.c檔    
-	- objects := $(patsubst %.c,%.o,$(wildcard *.c)) => 取得當前目錄下所有.c檔並置換成.o	
+    - $(wildcard *.c) => 取得當前目錄下所有.c檔
+	- objects := $(patsubst %.c,%.o,$(wildcard *.c)) => 取得當前目錄下所有.c檔並置換成.o
   5. notdir , 去除路徑
   6. patsubst, 替換萬用字元
  
